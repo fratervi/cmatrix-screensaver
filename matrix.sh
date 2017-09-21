@@ -40,7 +40,7 @@ while true
                         echo "still running"  > /dev/null
                         # echo -e "q\n"
                         # /usr/bin/killall -9 cmatrix > /dev/null
-                        process=$(ps -aux | grep -i "${sesh}" | grep -i cmatrix | cut -d " " -f2,3)
+			 process=$(ps -aux | grep -i "${sesh}" | grep -i cmatrix | tr -s "  " |  cut -d " " -f2)
                         /usr/bin/kill -9 $process
                         clear
                 else
