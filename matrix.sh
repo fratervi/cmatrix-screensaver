@@ -30,7 +30,7 @@ while true
        ps -a | grep -v grep | grep ${sesh} | grep cmatrix > /dev/null #checks for cmatrix in running processes
        result=$?
 #       echo "result = ${result}" >> ~/bin/matrix.log #uncomment for troubleshooting
-       if [ "${idle}" -gt "30" ] ; then #checks idles time and kicks off cmatrix if exceeds 300 seconds
+       if [ "${idle}" -gt "300" ] ; then #checks idles time and kicks off cmatrix if exceeds 300 seconds
        		if [ "${result}" -eq "0" ] ; then
                 echo "cmatrix still running"  >> ~/bin/matrix.log
                 else
@@ -42,7 +42,7 @@ while true
 #                echo "not idle long enough"  >> ~/bin/matrix.log #uncomment for troubleshooting
 		echo "not idle long enough"  > /dev/null
         fi
-        if [ "${idle}" -lt "30" ] ; then #checks idle time and kills cmatrix if it drops below 300
+        if [ "${idle}" -lt "300" ] ; then #checks idle time and kills cmatrix if it drops below 300
                 if [ "${result}" -eq "0" ] ; then
 #                	echo "cmatrix still running, identifying and killing it"  >> ~/bin/matrix.log #uncomment for troubleshooting
 			 process=$(ps -aux | grep -i "${sesh}" | grep -i cmatrix | tr -s "  " |  cut -d " " -f2)
